@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import java.util.*;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.util.Color;
@@ -72,6 +73,41 @@ public class LEDSubsystem extends SubsystemBase {
 
   public void turnOff() {
     setAll(Color.kBlack);
+  }
+
+  public void ThreeColorMode(Color color1, Color color2, Color color3){
+    List<Color> list=new ArrayList<Color>();  
+    list.add(color1);  
+    list.add(color2);  
+    list.add(color3);  
+    int repet = (m_ledBuffer.getLength() + 1) / 3; 
+    for(int j=0; j<3; j++){   
+        for(int i = 0; i < repet; i++){
+          m_ledBuffer.setLED(3*repet, list.get((j)%3));
+          m_ledBuffer.setLED(3*repet+1, list.get((j+1)%3));
+          m_ledBuffer.setLED(3*repet+2, list.get((j+2)%3));
+        }
+    }    
+  }
+
+  public void DividThreeColorMode(Color color1, Color color2, Color color3){
+    List<Color> list=new ArrayList<Color>();  
+    list.add(color1);  
+    list.add(color2);  
+    list.add(color3);  
+    int repet = (m_ledBuffer.getLength() + 1) / 3;  
+    for(int i = 0; i < repet; i++){
+      m_ledBuffer.setLED(3*repet, color1);
+      m_ledBuffer.setLED(3*repet+1, color2);
+      m_ledBuffer.setLED(3*repet+2, color3);
+    } 
+  }
+
+  public void DividColor(Color color, int index, int divid){
+    int repet = (m_ledBuffer.getLength() + 1) / divid; 
+    for(int i = 0; i < repet; i++){
+      m_ledBuffer.setLED(3*repet+index, color);
+    }
   }
 
   @Override
