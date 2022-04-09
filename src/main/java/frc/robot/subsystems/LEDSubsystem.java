@@ -83,9 +83,9 @@ public class LEDSubsystem extends SubsystemBase {
     int repet = (m_ledBuffer.getLength() + 1) / 3; 
     for(int j=0; j<3; j++){   
         for(int i = 0; i < repet; i++){
-          m_ledBuffer.setLED(3*repet, list.get((j)%3));
-          m_ledBuffer.setLED(3*repet+1, list.get((j+1)%3));
-          m_ledBuffer.setLED(3*repet+2, list.get((j+2)%3));
+          m_ledBuffer.setLED(3*i, list.get((j)%3));
+          m_ledBuffer.setLED(3*i+1, list.get((j+1)%3));
+          m_ledBuffer.setLED(3*i+2, list.get((j+2)%3));
         }
     }    
   }
@@ -97,16 +97,16 @@ public class LEDSubsystem extends SubsystemBase {
     list.add(color3);  
     int repet = (m_ledBuffer.getLength() + 1) / 3;  
     for(int i = 0; i < repet; i++){
-      m_ledBuffer.setLED(3*repet, color1);
-      m_ledBuffer.setLED(3*repet+1, color2);
-      m_ledBuffer.setLED(3*repet+2, color3);
+      m_ledBuffer.setLED(3*i, color1);
+      m_ledBuffer.setLED(3*i+1, color2);
+      m_ledBuffer.setLED(3*i+2, color3);
     } 
   }
 
   public void DividColor(Color color, int index, int divid){
     int repet = (m_ledBuffer.getLength() + 1) / divid; 
     for(int i = 0; i < repet; i++){
-      m_ledBuffer.setLED(3*repet+index, color);
+      m_ledBuffer.setLED(3*i+index, color);
     }
   }
 
