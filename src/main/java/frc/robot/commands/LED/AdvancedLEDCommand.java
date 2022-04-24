@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.LEDSubsystem.Side;
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.Constants;
 
 public class AdvancedLEDCommand extends CommandBase {
   LEDSubsystem m_led;
@@ -26,7 +26,7 @@ public class AdvancedLEDCommand extends CommandBase {
   @Override
   public void execute() {
     if (m_vision.getHoopB() == 0 ) {
-      // m_led.setOneSide(, color);
+      m_led.setOneSide(Side.LEFT,Color.kDarkViolet);
     }
       else {
       if (m_shooter.required_rpm - 7 < m_shooter.getShooterEncoderRPM()
@@ -53,11 +53,12 @@ public class AdvancedLEDCommand extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
-    m_led.setAll(Color.kWhite);
+    m_led.turnOff();
   }
 
   @Override
   public boolean isFinished() {
+    m_led.turnOff();
     return false;
   }
 }

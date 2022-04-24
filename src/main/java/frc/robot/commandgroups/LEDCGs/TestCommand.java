@@ -12,10 +12,10 @@ import frc.robot.subsystems.LEDSubsystem;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class DenemeBalls extends SequentialCommandGroup {
+public class TestCommand extends SequentialCommandGroup {
   LEDSubsystem m_led;
 
-  public DenemeBalls(LEDSubsystem m_led) {
+  public TestCommand(LEDSubsystem m_led) {
     this.m_led = m_led;
     Color sRed = Color.kMediumVioletRed;
     Color sYellow = Color.kYellow;
