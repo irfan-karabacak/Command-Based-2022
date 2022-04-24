@@ -12,6 +12,8 @@ import frc.robot.commandgroups.Autonomous.ThreeBalls.Red31;
 import frc.robot.commandgroups.Autonomous.TwoBalls.Blue21;
 import frc.robot.commandgroups.Autonomous.TwoBalls.Red21;
 import frc.robot.commandgroups.LEDCGs.HandsUp;
+import frc.robot.commandgroups.LEDCGs.Scorpions;
+import frc.robot.commandgroups.LEDCGs.DenemeBalls;
 import frc.robot.commandgroups.ShootCG;
 import frc.robot.commands.Autonomous.AdjustShooterAngle;
 import frc.robot.commands.Autonomous.AutoAngleTurnVoltage;
@@ -32,6 +34,8 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.commands.LED.AdvancedLEDCommand;
+import frc.robot.commands.LED.LEDCommand;
 
 public class RobotContainer {
 
@@ -74,7 +78,7 @@ public class RobotContainer {
     //         new ShooterTurnManual(
     //             m_shooter, () -> panel.getRawAxis(0), () -> panel.getRawButton(13)));
 
-    // m_led.setDefaultCommand(new LEDCommand(m_vision, m_shooter, m_led));
+    m_led.setDefaultCommand(new AdvancedLEDCommand(m_vision, m_shooter, m_led));
     configureButtonBindings();
   }
 
@@ -114,7 +118,7 @@ public class RobotContainer {
     panelButton11.whenPressed(new InstantCommand(() -> m_intake.pushPneumatic()));
     panelButton11.whenReleased(new InstantCommand(() -> m_intake.pullPneumatic()));
 
-    new JoystickButton(panel, 9).whileHeld(new HandsUp(m_led));
+    new JoystickButton(stick, 9).whileHeld(new Scorpions(m_led));
 
     new JoystickButton(stick, 10).whenPressed(new AutoAngleTurnVoltage(m_drive, 90));
     new JoystickButton(stick, 8).whenPressed(new AutoAngleTurnVoltage(m_drive, -90));

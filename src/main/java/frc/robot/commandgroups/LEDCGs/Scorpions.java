@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.util.Color;
 
 public class Scorpions extends SequentialCommandGroup{
     LEDSubsystem m_led;
-    Color sRed = new Color(192,41,47);
-    Color sYellow = new Color(255,180,32);
-    Color sWhite = new Color(255,255,255);
+    Color sRed = Color.kMediumVioletRed;
+    Color sYellow = Color.kYellow;
+    Color sWhite = Color.kWhiteSmoke;
 
     public Scorpions(LEDSubsystem m_led){
         this.m_led = m_led;
